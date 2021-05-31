@@ -1,8 +1,5 @@
 package era.com.room.dashboard;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -13,11 +10,13 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -29,6 +28,7 @@ public class Dashboard1 extends AppCompatActivity {
 
     CustomBottomNavigationView customBottomNavigationView;
     ArrayList<WelcomeMenuModel> list = new ArrayList<>();
+    ArrayList<WelcomeMenuModel> productList = new ArrayList<>();
 
    // HorizontalScrollView product_horizontalScrollView;
    private LinearLayout linearLayout_gridtableLayout;
@@ -64,15 +64,23 @@ public class Dashboard1 extends AppCompatActivity {
         list.add(new WelcomeMenuModel("Cheque Book", R.drawable.cheque, "CHEQUE"));
 
 
+
+
+        productList.add(new WelcomeMenuModel("Home Loan", R.drawable.product_home_loan, "CHEQUE"));
+        productList.add(new WelcomeMenuModel("Surid Chikisha", R.drawable.product_surid_chikitsha, "CHEQUE"));
+        productList.add(new WelcomeMenuModel("Surid Bibaho", R.drawable.product_surid_bibaho, "CHEQUE"));
+        productList.add(new WelcomeMenuModel("Education", R.drawable.product_surid_shikha, "CHEQUE"));
+
+
         UsersAdapter adapter = new UsersAdapter(this, list);
         menuGridView.setAdapter(adapter);
 
 
         ViewGroup.LayoutParams params = linearLayout_gridtableLayout.getLayoutParams();
-        params.width = 250*list.size();
+        params.width = 250*productList.size();
         linearLayout_gridtableLayout.setLayoutParams(params);
 
-        UsersAdapter2 productAdapter = new UsersAdapter2(this, list);
+        UsersAdapter2 productAdapter = new UsersAdapter2(this, productList);
         productGridView.setAdapter(productAdapter);
 
 
@@ -184,7 +192,7 @@ public class Dashboard1 extends AppCompatActivity {
 
         public UsersAdapter2(Context context, ArrayList<WelcomeMenuModel> welcomeMenuModels) {
 
-            super(context, R.layout.row_dashboard_1, welcomeMenuModels);
+            super(context, R.layout.row_product_dashboard_1, welcomeMenuModels);
 
         }
 
@@ -206,11 +214,13 @@ public class Dashboard1 extends AppCompatActivity {
 
                 LayoutInflater inflater = LayoutInflater.from(getContext());
 
-                convertView = inflater.inflate(R.layout.row_dashboard_1, parent, false);
+                convertView = inflater.inflate(R.layout.row_product_dashboard_1, parent, false);
 
                 viewHolder.menu_icon = (ImageView) convertView.findViewById(R.id.menu_icon);
                 viewHolder.menu_name = (TextView) convertView.findViewById(R.id.menu_name);
                 viewHolder.menu_soft_code = (TextView) convertView.findViewById(R.id.menu_soft_code);
+
+
 
                 convertView.setTag(viewHolder);
 
