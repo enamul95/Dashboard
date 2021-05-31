@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+    tools:context=".Dashboard1">
+
+    <include layout="@layout/header_1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight=".1"
+        android:orientation="vertical">
+        <!-- Nested Scroll view -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <era.com.room.dashboard.FixedGridView
+                    android:id="@+id/menuGridView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnWidth="110dp"
+                    android:padding="2dp"
+                    android:layout_margin="10dp"
+                    android:verticalSpacing="5dp"
+                    android:horizontalSpacing="3dp"
+                    android:gravity="center"
+                    android:numColumns="auto_fit"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp"
+                    android:text="Our Product"/>
+
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fillViewport="true"
+                    android:layout_below="@+id/product_horizontalScrollView">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout_gridtableLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <GridView
+                                android:id="@+id/productGridView"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="4dp"
+                                android:columnWidth="130dp"
+                                android:gravity="center"
+                                android:numColumns="auto_fit"
+                                android:horizontalSpacing="1dp"
+                                android:scrollbarAlwaysDrawHorizontalTrack="true"
+                                android:scrollbarAlwaysDrawVerticalTrack="true"
+                                android:scrollbars="horizontal"
+                                android:stretchMode="none"
+                                android:verticalSpacing="1dp">
+
+                            </GridView>
+
+
+                        </LinearLayout>
+                    </FrameLayout>
+                </HorizontalScrollView>
+            </LinearLayout>
+        </ScrollView>
+
+
+
+
+
+    </LinearLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/coordinatorlayout"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="30dp"
+            app:backgroundTint="@color/white"
+            app:itemIconTint="@color/white"
+            android:scaleType="fitXY"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/qr"
+            />
+
+        <era.com.room.dashboard.CustomBottomNavigationView
+            android:id="@+id/customBottomBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#ffffff"
+            app:itemIconTint="@drawable/bottom_navigation_colors"
+            app:itemTextColor="@drawable/bottom_navigation_colors"
+            app:labelVisibilityMode="labeled" />
+
+
+    </RelativeLayout>
+
+</LinearLayout>
